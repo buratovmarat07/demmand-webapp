@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DEMMAND Web App</title>
+</head>
+<body style="text-align: center; padding-top: 50px; font-family: Arial, sans-serif;">
+  <h1>Добро пожаловать</h1>
+  <p>Вы открыли Web App через Telegram бота!</p>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // Разворачивает WebApp на весь экран
+    tg.MainButton.text = "Нажми сюда";
+    tg.MainButton.show();
+    tg.MainButton.onClick(() => {
+      alert("Спасибо за нажатие!");
+    });
+  </script>
+</body>
+</html>
