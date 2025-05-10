@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
+<!-- saved from url=(0112)file:///C:/Users/kirit/OneDrive/%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
   <title>DEMMAND Web App</title>
 </head>
-<body style="text-align: center; padding-top: 50px; font-family: Arial, sans-serif;">
+<body style="text-align: center; padding-top: 50px;">
   <h1>Добро пожаловать</h1>
   <p>Вы открыли Web App через Telegram бота!</p>
 
   <script>
     const tg = window.Telegram.WebApp;
-    tg.expand(); // Разворачивает WebApp на весь экран
+    tg.expand(); // Открывает WebApp на весь экран
     tg.MainButton.text = "Нажми сюда";
     tg.MainButton.show();
     tg.MainButton.onClick(() => {
       alert("Спасибо за нажатие!");
     });
   </script>
-</body>
-</html>
+
+</body></html>
