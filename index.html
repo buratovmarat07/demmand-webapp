@@ -1,21 +1,65 @@
+
 <!DOCTYPE html>
-<!-- saved from url=(0112)file:///C:/Users/kirit/OneDrive/%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB/index.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <title>DEMMAND Web App</title>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Анкета сделки</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      padding: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: none;
+      font-size: 14px;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #9147ff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body style="text-align: center; padding-top: 50px;">
-  <h1>Добро пожаловать</h1>
-  <p>Вы открыли Web App через Telegram бота!</p>
+<body>
+  <h2>Заполните форму</h2>
+  <form id="dealForm">
+    <input type="text" placeholder="Что за товар, ссылка на товар" name="product" required>
+    <input type="text" placeholder="Нужна ли проверка товара" name="check" required>
+    <input type="text" placeholder="Нужен холд? Причина? Время? Кто оплачивает?" name="hold" required>
+    <input type="text" placeholder="Ссылка на продавца" name="seller" required>
+    <input type="text" placeholder="Ссылка на покупателя" name="buyer" required>
+    <input type="text" placeholder="Telegram второго участника" name="telegram2" required>
+    <input type="text" placeholder="Платежная система" name="payment" required>
+    <input type="text" placeholder="Сумма сделки" name="amount" required>
+    <button type="submit">Отправить</button>
+  </form>
 
   <script>
     const tg = window.Telegram.WebApp;
-    tg.expand(); // Открывает WebApp на весь экран
-    tg.MainButton.text = "Нажми сюда";
-    tg.MainButton.show();
-    tg.MainButton.onClick(() => {
-      alert("Спасибо за нажатие!");
+    tg.expand();
+
+    const form = document.getElementById("dealForm");
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      const entries = [...data.entries()];
+      let message = "📝 Новая заявка:\n\n";
+      for (let [key, value] of entries) {
+        message += `• ${value}\n`;
+      }
+      tg.sendData(message);
+      tg.close();
     });
   </script>
-
-</body></html>
+</body>
+</html>
